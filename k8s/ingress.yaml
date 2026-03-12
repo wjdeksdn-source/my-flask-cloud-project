@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: flask-ingress
+  annotations:
+    # Ingress Controller 종류에 따라 다를 수 있습니다 (보통 nginx 사용)
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /news
+        pathType: Prefix
+        backend:
+          service:
+            name: news-service  # 아까 만든 Service 이름과 일치해야 함
+            port:
+              number: 80
+      - path: /board
+        pathType: Prefix
+        backend:
+          service:
+            name: board-service
+            port:
+              number: 80
