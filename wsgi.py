@@ -1,13 +1,8 @@
-import sys
-import os
+from app import create_app
 
-# Flask 애플리케이션의 루트 디렉토리
-project_home = '/var/www/html/your_flask_app'
+# app/__init__.py의 create_app()을 실행하여 앱 객체를 만듭니다.
+app = create_app()
 
-# 프로젝트 홈 디렉토리가 sys.path에 없으면 추가
-if project_home not in sys.path:
-    sys.path.insert(0, project_home) # 리스트의 맨 앞에 추가
-
-# Flask 애플리케이션 인스턴스 임포트
-# 'application'은 mod_wsgi가 기대하는 기본 이름입니다.
-from app import app as application
+if __name__ == "__main__":
+    # 기존에 사용하던 포트(예: 5000)와 호스트 설정을 유지하세요.
+    app.run(host='0.0.0.0', port=5000, debug=True)
