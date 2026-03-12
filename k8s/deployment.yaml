@@ -16,8 +16,7 @@ spec:
     spec:
       containers:
       - name: flask-api
-        # 중요: 본인 도커허브 ID로 수정! (예: wjdeksdn/flask-api:latest)
-        image: wjdeksdn/flask-api:latest 
+        image: dwjung90/flask-api:latest
         ports:
         - containerPort: 5000
 ---
